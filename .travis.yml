@@ -2,26 +2,15 @@
 dist: trusty
 sudo: required
 
-addons:
-  apt:
-    sources:
-      - sourceline: 'deb https://packages.chef.io/repos/apt/stable trusty main'
-        key_url: 'https://packages.chef.io/chef.asc'
-    packages:
-      - chefdk
-
-before_script:
-  - eval "$(chef shell-init bash)"
-  - chef exec bundle install --with unit,smoke,travis
+install:
+  - bundle install --with unit,travis
 
 script:
   # Print versions
-  - chef --version
-  - cookstyle --version
-  - foodcritic --version
-  - kitchen --version
+  - bundle exec cookstyle --version
+  - bundle exec foodcritic --version
   # Run style checks
-  - chef exec cookstyle
-  - chef exec foodcritic --rule-file .foodcritic .
+  - bundle exec cookstyle
+  - bundle exec foodcritic --rule-file .foodcritic .
   # Run unit tests
-  - chef exec rspec
+  - bundle exec rspec
