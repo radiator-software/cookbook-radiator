@@ -15,6 +15,7 @@ group :unit do
   gem 'poise-service'
   gem 'poise-archive'
   gem 'cookstyle'
+  gem 'foodcritic'
 end
 
 group :junit do

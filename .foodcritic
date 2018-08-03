@@ -1,1 +1,3 @@
+# Skip some deprecations of Chef 14
+~FC121
 ~FC122

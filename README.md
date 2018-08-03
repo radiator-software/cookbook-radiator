@@ -1,5 +1,8 @@
 # Radiator Cookbook
 
+[![Build Status](https://travis-ci.org/radiator-software/cookbook-radiator.svg?branch=master)](https://travis-ci.org/radiator-software/cookbook-radiator)
+[![Coverage Status](https://coveralls.io/repos/github/radiator-software/cookbook-radiator/badge.svg?branch=master)](https://coveralls.io/github/radiator-software/cookbook-radiator?branch=master)
+
 This cookbook strives to be a simple way of handling the installation of [Radiator](https://radiatorsoftware.com/products/radiator/) and it's dependencies on different platforms. Radiator is an AAA server for RADIUS, TACACS+ and Diameter from Radiator Software. Radiator is a commercial product and has a separate commercial license. You can find more information in the [License and Authors](#license-and-authors) section below.
 
 As Radiator is not available publicly you will need to have a wrapper cookbook or some other way of delivering the installation file to the server you are using this cookbook on.
