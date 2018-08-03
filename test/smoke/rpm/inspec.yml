@@ -1,0 +1,10 @@
+name: radiator-rpm
+title: Radiator RPM InSpec Profile
+maintainer: Radiator Software Oy
+copyright: Radiator Software Oy
+copyright_email: devsupport@radiatorsoftware.com
+license: Apache-2.0
+summary: Tests Radiator installation from RPM by using an InSpec Compliance Profile
+version: 1.0.0
+supports:
+  - os-family: unix

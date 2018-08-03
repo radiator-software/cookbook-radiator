@@ -1,0 +1,44 @@
+<% chef_versions = %w(13.8.5 latest) %>
+<% test_platforms = %w(ubuntu-16.04 centos-7.4) %>
+<% radiator_versions = %w(4.21) %>
+---
+driver:
+  name: <%= ENV['KITCHEN_DRIVER'] || 'vagrant' %>
+  provider: <%= ENV['KITCHEN_PROVIDER'] || 'virtualbox' %>
+
+provisioner:
+  name: chef_solo
+  product_name: chef
+  channel: stable
+  log_level: <%= ENV['CHEF_LOG_LEVEL'] || 'info' %>
+
+verifier:
+  name: inspec
+
+platforms:
+<% test_platforms.product(chef_versions).each do |platform_version, chef_version| %>
+  - name: <%= platform_version %>-<%= chef_version %>
+    driver:
+      box: bento/<%= platform_version %>
+    provisioner:
+      product_version: <%= chef_version %>
+<% end %>
+suites:
+  <% radiator_versions.each do |version| %>
+  - name: evaluation-<%= version %>
+    run_list:
+      - recipe[test::default]
+      - recipe[radiator::evaluation]
+      - recipe[test::instances]
+    attributes:
+      radiator:
+        evaluation:
+          install_version: "<%= version %>"
+          accept_license: true
+          download_username: <%= ENV['RADIATOR_EVAL_USERNAME'] || 'please-change-me' %>
+          download_password: <%= ENV['RADIATOR_EVAL_PASSWORD'] || 'please-change-me' %>
+    verifier:
+      inspec_tests:
+        - path: test/smoke/radiator
+        - path: test/smoke/archive
+  <% end %>

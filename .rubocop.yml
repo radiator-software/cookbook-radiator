@@ -1,0 +1,4 @@
+AllCops:
+  Exclude:
+    - 'vendor/**/*'
+    - 'test/fixtures/cookbooks/**/*'

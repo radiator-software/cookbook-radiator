@@ -1,0 +1,17 @@
+PreCommit:
+  ALL:
+    exclude: &default_excludes
+      - '.git-hooks/**/*'
+  RuboCop:
+    enabled: true
+    command: ['chef', 'exec', 'cookstyle']
+  Foodcritic:
+    enabled: true
+    on_warn: fail
+    command: ['chef', 'exec', 'foodcritic', '--rule-file', '.foodcritic', '.']
+  YamlSyntax:
+    enabled: true
+PrePush:
+  RSpec:
+    enabled: true
+    command: ['chef', 'exec', 'rspec']
