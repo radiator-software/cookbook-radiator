@@ -16,6 +16,7 @@ All notable changes to the cookbook will be documented in this file.
 ## [2.0.0] - 2018-08-xx
 
 ### Added
+- [GH-1]: Travis configuration added. Uses Bundler to run unit tests and style checks.
 
 ### Changed
 - First public release of the cookbook
@@ -31,3 +32,5 @@ Version links
 <!---
 Issue links
 -->
+
+[GH-1]: https://github.com/radiator-software/cookbook-radiator/issues/1
